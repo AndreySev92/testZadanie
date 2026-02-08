@@ -65,8 +65,6 @@ public class ConsoleMenu {
         service.add(name, birthDate, group);
 
         System.out.println("✅ Запись добавлена.");
-        // можно показать ближайшие сразу
-        // showUpcoming(14);
     }
 
     private void editRecord() {
