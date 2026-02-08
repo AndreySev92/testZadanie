@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 public class BirthdayService {
     private final BirthdayRepository repo;
 
@@ -44,4 +45,19 @@ public class BirthdayService {
     public void add (String fullName, LocalDate birthDate, String group) {
         repo.add(new BirthdayRecord(UUID.randomUUID(), fullName, birthDate, group));
     }
+
+    public BirthdayRecord findById(UUID id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    public boolean update(BirthdayRecord r) {
+        if (repo.findById(r.getId()).isEmpty()) return false;
+        repo.update(r);
+        return true;
+    }
+
+    public boolean delete(UUID id) {
+        return repo.delete(id);
+    }
+
 }
